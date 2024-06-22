@@ -1,0 +1,18 @@
+version: '3.11'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_ENV: development
+      MONGO_URI: mongodb://mongo:27017/flaskdb
+
+  mongo:
+    image: mongo:4.4
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
